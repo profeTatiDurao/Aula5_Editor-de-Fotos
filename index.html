@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 3 - Foto Editor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container">
+    <header class="header">
+      <div class="logo"><i class="fa-solid fa-camera-retro"></i></div>
+      <h1 class="title">Foto Editor</h1>
+      <p class="subtitle">Agora com ajustes de brilho, contraste, saturação e borrão.</p>
+    </header>
+
+    <section class="editor-container">
+      <aside class="panel">
+        <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Filtros</h2>
+        <div class="filters-grid" id="filtersGrid"></div>
+
+        <div class="adjustments">
+          <h2 class="section-title"><i class="fa-solid fa-sliders"></i> Ajustes</h2>
+
+          <div class="adjustment-item">
+            <div class="adjustment-header"><span>Brilho</span><span class="adjustment-value"
+                id="brightnessValue">100%</span></div>
+            <input type="range" class="slider" id="brightnessSlider" min="0" max="200" value="100">
+          </div>
+
+          <div class="adjustment-item">
+            <div class="adjustment-header"><span>Contraste</span><span class="adjustment-value"
+                id="contrastValue">100%</span></div>
+            <input type="range" class="slider" id="contrastSlider" min="0" max="200" value="100">
+          </div>
+
+          <div class="adjustment-item">
+            <div class="adjustment-header"><span>Saturação</span><span class="adjustment-value"
+                id="saturationValue">100%</span></div>
+            <input type="range" class="slider" id="saturationSlider" min="0" max="200" value="100">
+          </div>
+
+          <div class="adjustment-item">
+            <div class="adjustment-header"><span>Borrão</span><span class="adjustment-value" id="blurValue">0px</span>
+            </div>
+            <input type="range" class="slider" id="blurSlider" min="0" max="10" value="0">
+          </div>
+        </div>
+        <!--Stickers-->
+        <div class="stickers-section">
+          <h2 class="section-title"><i class="fa-solid fa-note-sticky"></i> Stickers</h2>
+          <div class="stickers-grid" id="stickersGrid"></div>
+        </div>
+      </aside>
+
+      <section class="editor-area">
+        <div class="image-container">
+          <div class="no-image">
+            <div>
+              <i class="fa-regular fa-image"></i>
+              <p>Quadro da foto</p>
+              <small>Clique em uma foto da galeria para começar.</small>
+            </div>
+          </div>
+          <img id="previewImage" alt="Foto escolhida">
+          <!--Conteiner para receber stickers-->
+          <div class="stickers-container" id="stickersContainer"></div>
+        </div>
+        <canvas id="canvas"></canvas>
+        <div class="controls">
+          <button class="control-btn save-btn" id="saveBtn"><i class="fa-solid fa-download"></i> Salvar Foto</button>
+          <button class="control-btn reset-btn" id="resetBtn"><i class="fa-solid fa-rotate-left"></i> Resetar</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="panel gallery-section">
+      <h2 class="section-title"><i class="fa-solid fa-photo-film"></i> Galeria de Exemplo</h2>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
