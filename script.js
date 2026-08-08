@@ -150,8 +150,58 @@ function adicionarSticker(sticker) {
   elemento.style.transform = 'translate(-50%, -50%)'
 
   stickersContainer.appendChild(elemento)
+  //chamar função para arrastar
 
+}
 
+function ativarArraste(elemento){
+//Cria a função que recebe um elemento HTML para torná-lo arrastável.
+
+//Quando o usuário clica ou toca (mouse, dedo, caneta) no elemento...
+
+//Evita comportamentos padrão do navegador (como tentar selecionar texto).
+
+//"Prende" os eventos de movimento a este elemento, mesmo que o mouse saia rapidamente de cima dele.
+
+//Muda o cursor do mouse para a mãozinha "fechada/agarrando".
+
+//Guarda a posição horizontal (X) exata onde o clique/toque começou.
+
+//Guarda a posição vertical (Y) exata onde o clique/toque começou.
+
+//Guarda a posição horizontal (X) atual do elemento dentro do seu container.
+
+//Guarda a posição vertical (Y) atual do elemento dentro do seu container.
+
+//[Início do movimento] Cria a função interna que vai rodar toda vez que o mouse/dedo se mover.
+
+//Pega as medidas e a posição na tela da "caixa" (container) dos stickers.
+
+//Calcula a nova posição X: Posição inicial + O quanto o mouse andou pra esquerda/direita.
+
+//Calcula a nova posição Y: Posição inicial + O quanto o mouse andou pra cima/baixo.
+
+//Calcula o limite máximo da direita (largura da caixa menos a largura do elemento).
+
+//Calcula o limite máximo de baixo (altura da caixa menos a altura do elemento).
+
+//Aplica a nova posição X, travando ela entre 0 (esquerda) e o limiteX (direita).
+
+//Aplica a nova posição Y, travando ela entre 0 (topo) e o limiteY (fundo).
+
+//Remove transformações visuais (como scale ou translate) para não bugar a nova posição.
+
+//[Fim do movimento] Cria a função interna que roda quando o usuário solta o clique/toque.
+
+//Volta o cursor para a mãozinha "aberta".
+
+//Para de "ouvir" o movimento (para de arrastar).
+
+//Para de "ouvir" quando o botão solta (limpa a memória).
+
+//Começa a observar os movimentos do cursor e chama a função de mover.
+
+//Começa a observar quando o usuário solta o botão e chama a função de parar.
 }
 
 function salvarFoto() {
@@ -170,7 +220,7 @@ function salvarFoto() {
     ctx.filter = filtroAtual;
     ctx.drawImage(imagem, 0, 0, canvas.width, canvas.height);
     ctx.filter = 'none';
-
+    //chamar função desenhar stickers
     const link = document.createElement('a');
     link.download = 'foto-editada-aula-02.png';
     link.href = canvas.toDataURL('image/png');
@@ -180,6 +230,35 @@ function salvarFoto() {
     mostrarMensagem('Erro ao carregar a imagem para salvar. Use um servidor local ou imagens com CORS habilitado.');
   };
   imagem.src = fotoAtual;
+}
+
+
+function desenharStickersNoCanvas() {
+//Cria a função que transfere os stickers do HTML visual para uma imagem de Canvas.
+
+//Pega o tamanho e posição do container HTML na tela.
+
+//Calcula a diferença de proporção entre a largura da tela HTML e a largura real da imagem no Canvas.
+
+//Calcula a diferença de proporção entre a altura da tela HTML e a altura real da imagem no Canvas.
+
+//Pega todos os stickers na tela e repete os passos abaixo para cada um deles:
+
+//Pega a posição exata e o tamanho deste sticker específico na tela.
+
+//Descobre onde o CENTRO horizontal do sticker deve ficar na imagem do Canvas, ajustando pela escala.
+
+//Descobre onde o CENTRO vertical do sticker deve ficar na imagem do Canvas, ajustando pela escala.
+
+//Pega o tamanho da fonte do sticker na tela e converte para o tamanho proporcional no Canvas.
+
+//Avisa o Canvas que ele vai desenhar um texto (ou emoji) com esse tamanho e fonte.
+
+//Avisa o Canvas que a coordenada 'x' representa o meio do texto (não o começo).
+
+//Avisa o Canvas que a coordenada 'y' representa o meio vertical do texto (não a base).
+
+//Finalmente, "carimba" o conteúdo do sticker (texto ou emoji) no Canvas na posição X e Y calculadas.
 }
 
 function resetarFoto() {
